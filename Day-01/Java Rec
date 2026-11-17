@@ -1,0 +1,69 @@
+Three important concepts to learn before jumping into core java:
+JDK-JRE-JVM
+
+JVM VS JRE: The JVM (Java Virtual Machine) is the runtime engine that executes compiled Java bytecode, while the JRE (Java Runtime Environment) is the package that bundles the JVM with the core class libraries and files required to run Java applications
+
+methods: public, static, void, main
+public: jvm can call the method from outside the class
+static: 
+
+The 3rd image is used to check the versions that were used or are currently using to build the product.
+
+-> Where does jvm store its memory: in method area, heap, jvm language stacks, PC registers, Native mthod stacks
+
+why do we use "new" in java? : we use the new keyword to create (instantiate) a new object from a class and allocate memory for it during program execution 
+
+*Possible interview questions: 
+  1. what are the types of scooping to run in java?
+  2. why is long 8 and 12 bytes??
+  3. lexical scooping?
+  4. single = (assign the variable) and == ?? (== helps to compare primitive data types)
+  5. TASK bob: By using java (till operators), create an OTP generator using random class, the code take the no. of OTPs to generate and must generate that many OTPs in the output with and without new keyword
+
+Code: 
+1. Using new keyword – Random class
+
+import java.util.*;
+
+class Main {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        Random r = new Random();
+
+        System.out.print("Enter number of digits: ");
+        int n = sc.nextInt();
+
+        int min = (int)Math.pow(10, n - 1);
+        int max = (int)Math.pow(10, n);
+
+        int otp = min + r.nextInt(max - min);
+
+        System.out.println("Generated OTP: " + otp);
+    }
+}
+
+2. Without new keyword – Math.random()
+
+import java.util.*;
+
+class Main {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter number of digits: ");
+        int n = sc.nextInt();
+
+        int min = (int)Math.pow(10, n - 1);
+        int max = (int)Math.pow(10, n);
+
+        int otp = (int)(min + Math.random() * (max - min));
+
+        System.out.println("Generated OTP: " + otp);
+    }
+}
+
+
+
+
