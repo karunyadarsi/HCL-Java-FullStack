@@ -1,0 +1,25 @@
+What is a Lambda expression? 
+*refer the image above
+
+template ante the message 
+Types of Lambda expressions:
+No arguments, one argument, two argument, with explicit arguments, multiple statement
+
+No arguments:          ()->System.out.println("Hello")
+One argument:          s->System.out.println(s) 
+Two argument:          (x, y)-> x + y
+with explicit arguments types  (Integer x, Integer y) -> x + y
+multiple statement    (x, y)-> {
+                                              System.out.println(x); 
+                                              System.out.println(y) ;
+                                              return(x + y);
+                                     }
+
+What is Stream API?-java 8
+It is used to filter, transform, sort, and collect data. 
+
+Lazy Evaluation in Stream API:
+Lazy evaluation means intermediate operations are not executed immediately when they are declared. They are executed only when a termnial operation is invoked. 
+
+Streams lo ; pedite it will end
+We'll continue salary example in streams api:
