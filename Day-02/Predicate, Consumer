@@ -1,0 +1,102 @@
+Traditional VS Functional Programming
+
+Traditional :
+focuses on writing step-by-step instructions
+uses loops, conditions and methods to perform operations
+the programmer explicitly controls the iteration
+often requires more code for certain operations.
+
+Functional:
+focuses on defining what opeartion should be performed
+
+___________________________________________________________________________ 
+print salaries that are greater than 50k using collections framework in arrayList.
+
+class Main {
+    public static void main(String[] args) {
+        List<integer> salaries = Arrays.asList(25000, 50000, 30000, 70000)
+            for(Integer salary : salaries){
+                if(salary > 50000){
+                    System.out.println(salary);
+                }
+        }
+    }
+}
+___________________________________________________________________________ 
+functional interface
+anonymous
+___________________________________________________________________________ 
+Interface : same method ni multiple times 
+import java.util.*;
+
+public class Main {
+
+  @FuntionalInterface
+  interface Cal{
+    int calculate(int a, int b);
+  }
+
+    public static void main(String[] args) {
+      Cal add = (a, b)->a+b;
+      Cal mul = (a, b)->a*b;
+    }
+}
+
+___________________________________________________________________________ 
+
+Functional Interface:
+it has exactly one abstract method, it represents a single operation or behaviour, implementation uses lambda functions, java introducted its functional programming support in java 8. the @FunctionalInterface annotation helps verify the interface rules. 
+
+5 Types in Functional Interface: 1) predicate 2)function 3) consumer 4) supplier 5) Bifunction
+
+consumer- accepts and does not return any value 
+
+Anonymous function: without an explicit declared name, used to define behaviour without creating a seperate named method(to use it we use consumer here(functionalinterfacelo)), helps reduce unnecessary code in certain situations. 
+
+We got a doubt whether the anonymous function is private? 
+A) Anonymity means a function has no identifier (name) bound to it in the code definition. (e.g., function() {} or () => {}). 
+
+Consumer interface: it accepts one input value, performs an operation on the received value, does not return any result, its abstract method is accept(), useful for displaying and processing information. 
+
+Supplier interface: it does not accept any input, provides or returns a value when requested, its abstract method is get(), useful for generating or suplying values, it provides data whenever the application needs it. 
+
+Predicate Interface: it accepts an input and checks a condition, always returnns a boolean value, its abstract method is test(), useful for validations and decision-making, it helps determine whether a particular condition is satisfied.
+ ___________________________________________________________________________ 
+Create an online shopping cart that takes name, age, price(the value types must be predefined). An order is placed only when the age>18 years. This must be done using predicate interface and use consumer interface to accept.
+order id generate cheyyali 
+
+import java.util.*;
+import java.util.function.*;
+
+public class Main {
+    public static void main(String[] args) {
+     
+     String coustname = "Karss";
+     double price = 9000;
+     int age = 21;
+
+     Predicate<Integer> eligible = a-> a>=18;
+ 
+    Function<Double,Double> discount = p-> p -(p*0.10);
+
+        // Generate order ID
+        Supplier<Integer> orderId = () -> new Random().nextInt(9000) + 1000;
+
+        // Confirm order with customer name and order ID
+        Consumer<String> confirm = name ->
+            System.out.println("Order placed by " + name);
+
+        if (eligible.test(age)) {
+
+            double finalprice = discount.apply(price);
+
+            confirm.accept(coustname + "\nOrder ID: " + orderId.get());
+
+            System.out.println("Original Price: " + price);
+            System.out.println("Final Price: " + finalprice);
+
+            Consumer<String> print = System.out::println;
+            print.accept("Thank you for shopping!");
+        }
+    }
+}
